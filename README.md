@@ -1,2 +1,2 @@
 # Tools_Project_UnityGame
-유니티로 게임을 만들어보자!!
+일단은 3D로 FPS제작을 목표로 한다
