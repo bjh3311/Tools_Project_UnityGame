@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\IdleButton.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Player.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\WalkButton.cs" />
+    <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Weapon.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\YawnButton.cs" />
     <None Include="Assets\Scenes\Free Pixel Army\Documentation\Documentation.txt" />
     <Reference Include="UnityEngine">
