@@ -4,31 +4,57 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    SpriteRenderer rend;
-    public Vector2 speed_vec;
+    public float movePower = 3f;
+    public float jumpPower = 3f;
+    Rigidbody2D rigid;
+
+    Vector3 movemet;
+    bool isJumping = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        rend = GetComponent<SpriteRenderer>();
+        rigid = gameObject.GetComponent<Rigidbody2D>();
     }
     // Update is called once per frame , 1분에 약60번 업데이트
     void Update()
     {
-        speed_vec = Vector2.zero;//1초마다 계속 0으로 업데이트
-        if(Input.GetKey(KeyCode.RightArrow))//오른쪽 방향키 누르면
+        if(Input.GetButton("Jump"))
         {
-            rend.flipX = false;//오른쪽이면 뒤집지 않는다
-            speed_vec.x += 0.1f;
+            isJumping = true;
         }
-        if(Input.GetKey(KeyCode.LeftArrow))//왼쪽 방향키 누르면
+    }
+    void FixedUpdate()
+    {
+        Move();
+        Jump();
+    }
+   void Move()
+    {
+        Vector3 moveVelocity = Vector3.zero;
+        if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            rend.flipX = true;//왼쪽이면 뒤집는다
-            speed_vec.x += -0.1f;
+            moveVelocity = Vector3.left;
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+            //X값 스케일을 -1로 주어 좌우반전
         }
-        if(Input.GetKey(KeyCode.Space))//스페이스바 누르면
+        else if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            speed_vec.y += 0.1f;
+            moveVelocity = Vector3.right;
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            //X값 스케일을 1로 주어 다시 원위치 
         }
-        transform.Translate(speed_vec);
+        transform.position += moveVelocity * movePower * Time.deltaTime;
+    }
+    void Jump()
+    {
+        if(!isJumping)//Jump버튼이 눌리지않았다면
+        {
+            return;//종료
+        }
+        rigid.velocity = Vector2.zero;
+        Vector2 jumpVelocity = new Vector2(0, jumpPower);
+        rigid.AddForce(jumpVelocity, ForceMode2D.Impulse);
+        isJumping = false;
     }
 }

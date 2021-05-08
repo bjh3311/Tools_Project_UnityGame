@@ -895,7 +895,6 @@ GameObject:
   - component: {fileID: 383770734}
   - component: {fileID: 383770735}
   - component: {fileID: 383770736}
-  - component: {fileID: 383770737}
   m_Layer: 0
   m_Name: Helmet_0
   m_TagString: Untagged
@@ -993,19 +992,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.8}
   m_EdgeRadius: 0
---- !u!114 &383770737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383770733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec417e8a09ccf34089b8fbdcbd9576f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_vec: {x: 0, y: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1045,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9.9059925
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1912,6 +1898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1291140602}
   - component: {fileID: 1291140603}
+  - component: {fileID: 1291140604}
   m_Layer: 0
   m_Name: "\uC8FC\uC778\uACF5"
   m_TagString: Untagged
@@ -1956,6 +1943,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1291140604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291140601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec417e8a09ccf34089b8fbdcbd9576f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movePower: 1
+  jumpPower: 1
 --- !u!1 &1440086924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1969,6 @@ GameObject:
   - component: {fileID: 1440086927}
   - component: {fileID: 1440086926}
   - component: {fileID: 1440086928}
-  - component: {fileID: 1440086929}
   m_Layer: 0
   m_Name: Weapons_0
   m_TagString: Untagged
@@ -2086,20 +2086,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 0.4}
   m_EdgeRadius: 0
---- !u!114 &1440086929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440086924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eeab528e82faee4592e190d35ea4555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed_vec: {x: 0, y: 0}
-  position: {x: 0, y: 0}
 --- !u!1 &1521544895
 GameObject:
   m_ObjectHideFlags: 0
