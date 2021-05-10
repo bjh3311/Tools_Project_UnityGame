@@ -4,57 +4,41 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movePower = 3f;
-    public float jumpPower = 3f;
+    private Weapon w;//스크립트
+    public GameObject Weapons_0;//무기 오브젝트
+    SpriteRenderer rend;
     Rigidbody2D rigid;
-
-    Vector3 movemet;
-    bool isJumping = false;
-
     // Start is called before the first frame update
     void Start()
     {
+        w = Weapons_0.GetComponent<Weapon>();//스크립트 불러옴
         rigid = gameObject.GetComponent<Rigidbody2D>();
+        rend = GetComponent<SpriteRenderer>();
     }
-    // Update is called once per frame , 1분에 약60번 업데이트
+    // Update is called once per fdbslxl rame , 1분에 약60번 업데이트
     void Update()
     {
-        if(Input.GetButton("Jump"))
+        rigid.velocity = new Vector2(0, 0);
+        if (Input.GetKey(KeyCode.LeftArrow))//왼쪽 방향키 누르면
         {
-            isJumping = true;
+            w.yFlip();
+            rend.flipX = true;
+            Weapons_0.transform.localPosition = new Vector3(-0.66f, 0.38f, 0);
+            rigid.velocity=new Vector2(-10f,0);
+            
         }
-    }
-    void FixedUpdate()
-    {
-        Move();
-        Jump();
-    }
-   void Move()
-    {
-        Vector3 moveVelocity = Vector3.zero;
-        if (Input.GetAxisRaw("Horizontal") < 0)
+        if(Input.GetKey(KeyCode.RightArrow))//오른쪽 방향키 누르면
         {
-            moveVelocity = Vector3.left;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-            //X값 스케일을 -1로 주어 좌우반전
+            w.nFlip();
+            Weapons_0.transform.localPosition = new Vector3(0.66f, 0.38f, 0);
+            rend.flipX = false;
+            rigid.velocity=new Vector2(10f,0);
+
         }
-        else if (Input.GetAxisRaw("Horizontal") > 0)
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            moveVelocity = Vector3.right;
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            //X값 스케일을 1로 주어 다시 원위치 
+            rigid.AddForce(new Vector2(0, 50f));
         }
-        transform.position += moveVelocity * movePower * Time.deltaTime;
-    }
-    void Jump()
-    {
-        if(!isJumping)//Jump버튼이 눌리지않았다면
-        {
-            return;//종료
-        }
-        rigid.velocity = Vector2.zero;
-        Vector2 jumpVelocity = new Vector2(0, jumpPower);
-        rigid.AddForce(jumpVelocity, ForceMode2D.Impulse);
-        isJumping = false;
-    }
+
+    } 
 }
