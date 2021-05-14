@@ -5,11 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnBecameInvisible()//화면밖으로 나갈때
     {
-        if(collision.gameObject.tag=="Border")
-        {
-            Destroy(gameObject);
-        }
+        Destroy(this.gameObject);//총알 파괴
     }
 }

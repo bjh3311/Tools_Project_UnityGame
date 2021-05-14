@@ -66,9 +66,10 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        GameObject bullet = Instantiate(bulletObj, transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletObj, transform.position+Vector3.right*2.0f+Vector3.up*1.0f, transform.rotation);
+        //현재 위치보다 오른쪽위에 총알생성 
         Rigidbody2D rigid_bullet = bullet.GetComponent<Rigidbody2D>();
-        rigid.AddForce(Vector2.right*10,ForceMode2D.Impulse);
+        rigid_bullet.AddForce(Vector2.right*15,ForceMode2D.Impulse);
 
         curShotDelay = 0;//꼭 초기화해줘야된다.
     }
