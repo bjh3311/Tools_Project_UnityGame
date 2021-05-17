@@ -9,4 +9,12 @@ public class Bullet : MonoBehaviour
     {
         Destroy(this.gameObject);//총알 파괴
     }
+    void OnTriggerEnter2D(Collider2D collision)//적과 부딪히면
+    {
+        if(collision.gameObject.tag=="Enemy")
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 }

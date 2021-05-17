@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 102
-    y: 60
+    x: 180
+    y: 134
     width: 1688
     height: 935
   m_ShowMode: 4
@@ -45,10 +45,10 @@ MonoBehaviour:
     y: 30
     width: 1688
     height: 885
-  m_MinSize: {x: 679, y: 492}
+  m_MinSize: {x: 678, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 132
+  controlID: 57
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,7 +216,7 @@ MonoBehaviour:
     y: 0
     width: 1349
     height: 885
-  m_MinSize: {x: 403, y: 492}
+  m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
   controlID: 58
@@ -241,8 +241,8 @@ MonoBehaviour:
     y: 0
     width: 1349
     height: 537
-  m_MinSize: {x: 403, y: 221}
-  m_MaxSize: {x: 8003, y: 4021}
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
   controlID: 59
 --- !u!114 &11
@@ -295,10 +295,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 270
-    y: 96
-    width: 1140
-    height: 609
+    x: 523
+    y: 182
+    width: 1022
+    height: 516
   m_ViewDataDictionary: {fileID: 0}
   m_ViewTransforms:
     m_KeySerializationHelper:
@@ -359,10 +359,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 376
-    y: 81
-    width: 1153
-    height: 615
+    x: 523
+    y: 182
+    width: 1022
+    height: 516
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &14
 MonoBehaviour:
@@ -385,8 +385,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 102
-    y: 627
+    x: 0
+    y: 556
     width: 1348
     height: 327
   m_ViewDataDictionary: {fileID: 0}
@@ -403,11 +403,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Free Pixel Army/Scripts
+    - Assets/Scenes/Free Pixel Army/Sprites/Humans/Ordinary
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Free Pixel Army/Scripts
+  - Assets/Scenes/Free Pixel Army/Sprites/Humans/Ordinary
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\ross2\\Desktop\\\uC9C4\uD658\uC774\uAEBC\\\uD234\uC2A4\\\uC720\uB2C8\uD2F0
     \uD504\uB85C\uC81D\uD2B8\\Tools_Project_UnityGame\\New Unity Project"
@@ -415,9 +415,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9c3a0000
-    m_LastClickedID: 15004
-    m_ExpandedIDs: 000000008c3a00008e3a0000903a000000ca9a3b
+    m_SelectedIDs: b63a0000
+    m_LastClickedID: 15030
+    m_ExpandedIDs: 000000008e3a0000903a00009e3a0000aa3a0000b63a00009658000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -522,8 +522,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1451
-    y: 90
+    x: 1350
+    y: 19
     width: 338
     height: 864
   m_ViewDataDictionary: {fileID: 0}
@@ -560,17 +560,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 102
-    y: 90
+    x: 180
+    y: 164
     width: 324
     height: 516
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 62fbffff
+      m_SelectedIDs: da570000
+      m_LastClickedID: 22490
+      m_ExpandedIDs: 7ed3ffffead3ffff86d4ffff06d5ffff32d5ffff62fbffffa4390000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -615,8 +615,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 427
-    y: 90
+    x: 505
+    y: 164
     width: 1022
     height: 516
   m_ViewDataDictionary: {fileID: 0}
@@ -630,9 +630,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.81000006, y: 0.19999996, z: -10}
+    m_Target: {x: -1.215, y: 0.19999996, z: -10}
     speed: 2
-    m_Value: {x: -0.81000006, y: 0.19999996, z: -10}
+    m_Value: {x: -1.215, y: 0.19999996, z: -10}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -730,8 +730,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 427
-    y: 90
+    x: 523
+    y: 182
     width: 1022
     height: 516
   m_ViewDataDictionary: {fileID: 0}
@@ -822,8 +822,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 78
-    y: 654
+    x: 8
+    y: 671
     width: 1348
-    height: 326
+    height: 327
   m_ViewDataDictionary: {fileID: 0}
