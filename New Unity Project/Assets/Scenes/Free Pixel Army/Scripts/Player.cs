@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            rigid.AddForce(new Vector2(0, 50f));
+            rigid.velocity = new Vector2(0, 10f);
         }
     }
     void Reload()
@@ -83,5 +83,13 @@ public class Player : MonoBehaviour
         
 
         curShotDelay = 0;//꼭 초기화해줘야된다.
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy_Bullet")
+        {
+            rigid.velocity = new Vector2(0, 50f);
+            Destroy(gameObject, 0.6f);
+        }
     }
 }
