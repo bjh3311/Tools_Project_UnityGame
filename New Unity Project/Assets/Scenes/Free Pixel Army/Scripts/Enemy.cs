@@ -5,9 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Rigidbody2D rigid;
-    public float maxShotDelay;//최대속도
+    public float maxShotDelay;
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
+    
 
     void Start()
     {
