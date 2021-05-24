@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
 
+    public AudioClip audioAttack;
+
     public bool isGround = false;//점프 제한을 위한 변수
     public Transform groundCheck;
     public LayerMask groundLayers;
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        audioAttack.
         if(rend.flipX)//왼쪽을 볼 때
         {
             GameObject bullet = Instantiate(bulletObj, transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f, transform.rotation);
