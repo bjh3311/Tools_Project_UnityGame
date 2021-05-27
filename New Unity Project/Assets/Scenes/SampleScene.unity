@@ -1012,7 +1012,6 @@ MonoBehaviour:
   curShotDelay: 0
   bulletObj: {fileID: 1187522541993332461, guid: b22c80f446bc7cc439cbec9eece87774,
     type: 3}
-  audioAttack: {fileID: 8300000, guid: dd000846d09521643a5a3c5b6950d88e, type: 3}
   isGround: 0
   groundCheck: {fileID: 383770734}
   groundLayers:

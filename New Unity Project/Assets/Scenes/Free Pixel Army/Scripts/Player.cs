@@ -51,11 +51,11 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            if(isGround)
+            if (isGround)
             {
-                rigid.velocity=new Vector2(0, 200.0f);
+                rigid.velocity = new Vector2(0, 200.0f);
             }
-            
+
         }
     }
     void Reload()
@@ -64,22 +64,22 @@ public class Player : MonoBehaviour
     }
     void Fire()//발사하는 함수
     {
-        if(!Input.GetButton("Fire1"))//Fire버튼을 안누르면 종료
+        if (!Input.GetButton("Fire1"))//Fire버튼을 안누르면 종료
         {
             return;
         }
-        if(curShotDelay<maxShotDelay)//장전시간이 충족이안되면
+        if (curShotDelay < maxShotDelay)//장전시간이 충족이안되면
         {
             return;
         }
-        if(rend.flipX)//왼쪽을 볼 때
+        if (rend.flipX)//왼쪽을 볼 때
         {
             GameObject bullet = Instantiate(bulletObj, transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f, transform.rotation);
             //현재 위치보다 왼쪽위에 총알생성 
             Rigidbody2D rigid_bullet = bullet.GetComponent<Rigidbody2D>();
             rigid_bullet.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
         }
-        else if(!rend.flipX)//오른쪽을 볼 때
+        else if (!rend.flipX)//오른쪽을 볼 때
         {
             GameObject bullet = Instantiate(bulletObj, transform.position + Vector3.right * 2.0f + Vector3.up * 1.0f, transform.rotation);
             //현재 위치보다 오른쪽위에 총알생성 

@@ -8,8 +8,6 @@ public class Enemy : MonoBehaviour
     public float maxShotDelay;
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
-    
-
     void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
@@ -29,6 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            curShotDelay = -3000f;
             rigid.velocity = new Vector2(0, 14f);
             Destroy(gameObject,0.6f);
         }
