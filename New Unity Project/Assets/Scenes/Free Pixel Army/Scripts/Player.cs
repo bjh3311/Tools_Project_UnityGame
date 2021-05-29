@@ -51,11 +51,10 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            if (isGround)
+            if(isGround)
             {
-                rigid.velocity = new Vector2(0, 200.0f);
+                rigid.velocity = new Vector2(0, 300f);
             }
-
         }
     }
     void Reload()
