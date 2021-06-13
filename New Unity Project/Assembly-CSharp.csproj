@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\BetterJumping.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\BoredButton.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Enemy.cs" />

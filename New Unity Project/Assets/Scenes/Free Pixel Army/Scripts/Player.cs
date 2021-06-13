@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     private Weapon w;//스크립트
+    private BetterJumping Jumping;
     public GameObject Weapons_0;//무기 오브젝트
     SpriteRenderer rend;
     Rigidbody2D rigid;
@@ -47,17 +49,9 @@ public class Player : MonoBehaviour
             Weapons_0.transform.localPosition = new Vector3(0.66f, 0.38f, 0);
             rend.flipX = false;
             rigid.velocity = new Vector2(10f, 0);
-
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            if(isGround)
-            {
-                rigid.velocity = new Vector2(0, 300f);
-            }
         }
     }
-    void Reload()
+        void Reload()
     {
         curShotDelay += Time.deltaTime;
     }
