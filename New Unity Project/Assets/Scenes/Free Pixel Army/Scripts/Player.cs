@@ -6,13 +6,17 @@ public class Player : MonoBehaviour
 {
 
     private Weapon w;//스크립트
-    private BetterJumping Jumping;
     public GameObject Weapons_0;//무기 오브젝트
     SpriteRenderer rend;
     Rigidbody2D rigid;
     public float maxShotDelay;//최대속도
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
+
+    public bool isGround = false;//점프 제한을 위한 변수
+    public Transform groundCheck;
+    public LayerMask groundLayers;
+    public float jumpPower;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,15 +33,13 @@ public class Player : MonoBehaviour
     }
     void Move()
     {
-        rigid.velocity = new Vector2(0, 0);
-        
+        isGround = Physics2D.OverlapCircle(groundCheck.position,0.5f, groundLayers);
         if (Input.GetKey(KeyCode.LeftArrow))//왼쪽 방향키 누르면
         {
             w.yFlip();
             rend.flipX = true;
             Weapons_0.transform.localPosition = new Vector3(-0.66f, 0.38f, 0);
             rigid.velocity = new Vector2(-10f, 0);
-
         }
         if (Input.GetKey(KeyCode.RightArrow))//오른쪽 방향키 누르면
         {
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
             Weapons_0.transform.localPosition = new Vector3(0.66f, 0.38f, 0);
             rend.flipX = false;
             rigid.velocity = new Vector2(10f, 0);
+        }
+        if(Input.GetKey(KeyCode.UpArrow)&&isGround)
+        {
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
         void Reload()
