@@ -13,10 +13,6 @@ public class Player : MonoBehaviour
     public float maxShotDelay;//최대속도
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
-
-    public bool isGround = false;//점프 제한을 위한 변수
-    public Transform groundCheck;
-    public LayerMask groundLayers;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +30,7 @@ public class Player : MonoBehaviour
     void Move()
     {
         rigid.velocity = new Vector2(0, 0);
-        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayers);
+        
         if (Input.GetKey(KeyCode.LeftArrow))//왼쪽 방향키 누르면
         {
             w.yFlip();
