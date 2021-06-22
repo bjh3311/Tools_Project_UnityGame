@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
+
         void Reload()
     {
         curShotDelay += Time.deltaTime;
@@ -82,13 +83,5 @@ public class Player : MonoBehaviour
             rigid_bullet.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
         }
         curShotDelay = 0;//꼭 초기화해줘야된다.
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy_Bullet")
-        {
-            rigid.velocity = new Vector2(0, 50f);
-            Destroy(gameObject, 0.6f);
-        }
     }
 }
