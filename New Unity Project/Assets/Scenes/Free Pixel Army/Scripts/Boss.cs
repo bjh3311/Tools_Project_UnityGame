@@ -28,8 +28,7 @@ public class Boss : MonoBehaviour
     {
         if(col.CompareTag("Bullet"))
         {
-            nowHp = nowHp-10;
-            Debug.Log(nowHp);
+            nowHp = nowHp-1;
             if(nowHp<=0)
             {
                 Destroy(gameObject);

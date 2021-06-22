@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -17,12 +18,17 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayers;
     public float jumpPower;
+
+    public GameObject nowHpbar;
+    public int nowHp = 100;
+    Image _nowHpbar;
     // Start is called before the first frame update
     void Start()
     {
         w = Weapons_0.GetComponent<Weapon>();//스크립트 불러옴
         rigid = gameObject.GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
+        _nowHpbar = nowHpbar.transform.GetComponent<Image>();
     }
     // Update is called once per fdbslxl rame , 1분에 약60번 업데이트
     void Update()
@@ -30,6 +36,8 @@ public class Player : MonoBehaviour
         Move();//이동하는 함수
         Fire();//총알을 쏘는 함수
         Reload();//장전한하는 함수
+        _nowHpbar.fillAmount = (float)nowHp /(float)100;
+        
     }
     void Move()
     {
@@ -53,8 +61,20 @@ public class Player : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
+    private void OnTriggerEnter2D(Collider2D col)//적 총알에 맞으면
+    {
+        if (col.CompareTag("Enemy_Bullet"))
+        {
+            nowHp = nowHp - 5;
+            Debug.Log(nowHp);
+            if (nowHp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
-        void Reload()
+    void Reload()
     {
         curShotDelay += Time.deltaTime;
     }

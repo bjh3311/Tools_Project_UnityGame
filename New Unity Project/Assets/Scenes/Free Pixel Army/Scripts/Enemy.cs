@@ -18,11 +18,6 @@ public class Enemy : MonoBehaviour
         Fire();
         Reload();
     }
-    void OnBecameInvisible()//화면밖으로 나갈때
-    {
-        Destroy(gameObject);//
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")

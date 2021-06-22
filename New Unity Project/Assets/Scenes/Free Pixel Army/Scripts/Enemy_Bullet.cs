@@ -11,7 +11,7 @@ public class Enemy_Bullet : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)//적과 부딪히면
     {
-        if (collision.gameObject.tag == "Plyer")
+        if (collision.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
         }
