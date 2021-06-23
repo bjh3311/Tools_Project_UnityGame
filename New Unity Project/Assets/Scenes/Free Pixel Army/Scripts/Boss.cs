@@ -7,6 +7,10 @@ public class Boss : MonoBehaviour
     public GameObject prfHpBar;
     public GameObject canvas;
 
+    public float maxShotDelay;
+    public float curShotDelay;//발사간 속도
+    public GameObject bulletObj;
+
     public string enemyName;
     public int maxHp;
     public int nowHp;
@@ -45,9 +49,46 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Fire();
+        Reload();
         Vector3 _hpBarPos =
            Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
         hpBar.position = _hpBarPos;
         nowHpbar.fillAmount = (float)nowHp / (float)maxHp;
+    }
+    void Reload()
+    {
+        curShotDelay += Time.deltaTime;
+    }
+    void Fire()//발사하는 함수
+    {
+        if (curShotDelay < maxShotDelay)//장전시간이 충족이안되면
+        {
+            return;
+        }
+        int random = Random.Range(1, 10);
+        if (random>=1&&random<4)
+        {
+            GameObject bullet = Instantiate(bulletObj, transform.position + Vector3.left * 2.5f + Vector3.up * 1.5f, transform.rotation);
+            Rigidbody2D rigid_bullet = bullet.GetComponent<Rigidbody2D>();
+            rigid_bullet.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
+        }
+        else if(random>=4&&random<7)
+        {
+            GameObject bullet2 = Instantiate(bulletObj, transform.position + Vector3.left * 2.5f + Vector3.up * -0.2f, transform.rotation);
+            Rigidbody2D rigid_bullet_2 = bullet2.GetComponent<Rigidbody2D>();
+            rigid_bullet_2.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
+        }
+        else
+        {
+            GameObject bullet3 = Instantiate(bulletObj, transform.position + Vector3.left * 2.5f + Vector3.up * -2.7f, transform.rotation);
+            //현재 위치보다 왼쪽위에 총알생성 
+            Rigidbody2D rigid_bullet_3 = bullet3.GetComponent<Rigidbody2D>();
+            rigid_bullet_3.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
+        }
+        
+       
+       
+        curShotDelay = 0;//꼭 초기화해줘야된다.
     }
 }

@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameObject Weapons_0;//무기 오브젝트
     SpriteRenderer rend;
     Rigidbody2D rigid;
-    public float maxShotDelay;//최대속도
+    public float maxShotDelay = 0.2f;//최대속도
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
 
@@ -66,7 +66,6 @@ public class Player : MonoBehaviour
         if (col.CompareTag("Enemy_Bullet"))
         {
             nowHp = nowHp - 5;
-            Debug.Log(nowHp);
             if (nowHp <= 0)
             {
                 Destroy(gameObject);

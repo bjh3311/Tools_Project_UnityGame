@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Enemy_Bullet.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\FPS.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\IdleButton.cs" />
+    <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Item.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Player.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\WalkButton.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Weapon.cs" />
