@@ -7,6 +7,11 @@ public class Boss : MonoBehaviour
     public GameObject prfHpBar;
     public GameObject canvas;
 
+    public SpriteRenderer rend;
+
+    public Transform target;// 타겟을 지정 boss의 타겟은 Player다
+    public float fieldOfVision=30f;//boss의 시야 범위
+
     public float maxShotDelay;
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
@@ -43,14 +48,20 @@ public class Boss : MonoBehaviour
     void Start()
     {
         hpBar = Instantiate(prfHpBar, canvas.transform).GetComponent<RectTransform>();
-        SetEnmeyStatus("Enemy1", 100, 10, 1);    
+        SetEnmeyStatus("Enemy1", 100, 10, 1);
+        rend = GetComponent<SpriteRenderer>();
         nowHpbar = hpBar.transform.GetChild(0).GetComponent<Image>();
     }
     // Update is called once per frame
     void Update()
     {
-        Fire();
         Reload();
+        float distance = Vector3.Distance(transform.position, target.position);//BOSS와 Player간의 거리
+        if(distance<=fieldOfVision)
+        {
+            FaceTarget();
+            Fire();//일정거리 안에 있을때 공격
+        }
         Vector3 _hpBarPos =
            Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
         hpBar.position = _hpBarPos;
@@ -86,9 +97,18 @@ public class Boss : MonoBehaviour
             Rigidbody2D rigid_bullet_3 = bullet3.GetComponent<Rigidbody2D>();
             rigid_bullet_3.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
         }
-        
-       
-       
         curShotDelay = 0;//꼭 초기화해줘야된다.
+    }
+
+    void FaceTarget()//Player를 바라보게 만들어주는 함수
+    {
+        if (target.position.x - transform.position.x < 0) // 타겟이 왼쪽에 있을 때
+        {
+            rend.flipX = false;
+        }
+        else // 타겟이 오른쪽에 있을 때
+        {
+            rend.flipX = true;
+        }
     }
 }

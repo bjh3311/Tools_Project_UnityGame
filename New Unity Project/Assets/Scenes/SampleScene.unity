@@ -236,12 +236,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84237349}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.39163, y: 4.967533, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 44.391632, y: 4.9675293, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1790307989}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383770733
 GameObject:
@@ -3567,6 +3567,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prfHpBar: {fileID: 1790307988}
   canvas: {fileID: 1710043819}
+  rend: {fileID: 0}
+  target: {fileID: 383770734}
+  fieldOfVision: 30
   maxShotDelay: 2
   curShotDelay: 0
   bulletObj: {fileID: 6525537944728328456, guid: 32dc9a67c710e544cb0a400c3fee46fd,
@@ -5133,6 +5136,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1202700503}
+  - {fileID: 84237353}
   m_Father: {fileID: 1710043823}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
