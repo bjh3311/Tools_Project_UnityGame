@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public LayerMask groundLayers;
     public float jumpPower;
 
+    Animator animator;
+
     public GameObject nowHpbar;
     public int nowHp = 100;
     Image _nowHpbar;
@@ -31,6 +33,8 @@ public class Player : MonoBehaviour
         rigid = gameObject.GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
         _nowHpbar = nowHpbar.transform.GetComponent<Image>();
+        animator = GetComponent<Animator>();
+        
     }
     // Update is called once per fdbslxl rame , 1분에 약60번 업데이트
     void Update()
@@ -50,13 +54,19 @@ public class Player : MonoBehaviour
             rend.flipX = true;
             Weapons_0.transform.localPosition = new Vector3(-0.66f, 0.38f, 0);
             rigid.velocity = new Vector2(-10f, 0);
+            animator.SetBool("moving", true);//움직인다면 애니메이션 효과 킨다
         }
-        if (Input.GetKey(KeyCode.RightArrow))//오른쪽 방향키 누르면
+        else if (Input.GetKey(KeyCode.RightArrow))//오른쪽 방향키 누르면
         {
             w.nFlip();
             Weapons_0.transform.localPosition = new Vector3(0.66f, 0.38f, 0);
             rend.flipX = false;
             rigid.velocity = new Vector2(10f, 0);
+            animator.SetBool("moving", true);//움직인다면 애니메이션 효과 킨다
+        }
+        else
+        {
+            animator.SetBool("moving", false);//안움직인다면 애니메이션 효과를 끈다
         }
         if(Input.GetKey(KeyCode.UpArrow)&&isGround)
         {
