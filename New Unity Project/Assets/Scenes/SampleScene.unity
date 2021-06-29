@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 84237352}
   - component: {fileID: 84237351}
   - component: {fileID: 84237350}
+  - component: {fileID: 84237354}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -240,9 +241,30 @@ Transform:
   m_LocalPosition: {x: 44.391632, y: 4.9675293, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1790307989}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &84237354
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84237349}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &383770733
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +280,7 @@ GameObject:
   - component: {fileID: 383770737}
   m_Layer: 0
   m_Name: Helmet_0
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,6 +394,7 @@ MonoBehaviour:
   curShotDelay: 0
   bulletObj: {fileID: 1187522541993332461, guid: b22c80f446bc7cc439cbec9eece87774,
     type: 3}
+  item: {fileID: 84237349}
   isGround: 0
   groundCheck: {fileID: 383770734}
   groundLayers:
@@ -5136,7 +5159,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1202700503}
-  - {fileID: 84237353}
   m_Father: {fileID: 1710043823}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public float curShotDelay;//발사간 속도
     public GameObject bulletObj;
 
+    public GameObject item;
+
     public bool isGround = false;//점프 제한을 위한 변수
     public Transform groundCheck;
     public LayerMask groundLayers;

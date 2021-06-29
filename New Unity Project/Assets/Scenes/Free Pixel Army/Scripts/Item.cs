@@ -20,10 +20,8 @@ public class Item : MonoBehaviour
     {
         if(col.CompareTag("Bullet"))
         {
-            //Debug.Log("총알과 충돌");
             p.maxShotDelay = 0.05f;
             Destroy(this.gameObject);
-
         }
     }
 }
