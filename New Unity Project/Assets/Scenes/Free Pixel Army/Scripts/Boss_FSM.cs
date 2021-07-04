@@ -7,13 +7,12 @@ public class Boss_FSM : MonoBehaviour
 {
     public enum CurrentState { idle,attack,walk,dead};
     public CurrentState curState = CurrentState.idle;//초기상태는 idle
+
     private Transform _transform;
     private Transform _player_transform;
 
-    public SpriteRenderer rend;
-
     public float traceDist = 20.0f;//추적거리
-    public float attackDist = 4.0f;//공격거리
+    public float attackDist = 5.0f;//공격거리
 
     private Animator _animator;
 
@@ -25,11 +24,9 @@ public class Boss_FSM : MonoBehaviour
         _transform = this.gameObject.GetComponent<Transform>();
         _player_transform = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _animator = this.gameObject.GetComponent<Animator>();
-        StartCoroutine(this.CheckState());//현재상태를 체크하는 코루틴 시작
+        StartCoroutine(this.CheckState());
         StartCoroutine(this.CheckStateForAction());
-        rend = this.gameObject.GetComponent<SpriteRenderer>();
     }
-
     IEnumerator CheckState()
     {
         while(!isDead)
@@ -52,34 +49,23 @@ public class Boss_FSM : MonoBehaviour
     }
     IEnumerator CheckStateForAction()
     {
+        
         while(!isDead)
         {
-            switch(curState)
+            Debug.Log(curState);
+            switch (curState)
             {
                 case CurrentState.idle:
-                    _animator.SetBool("ismoving", false);
-                    _animator.SetBool("isattack", false);
                     break;
                 case CurrentState.walk:
-                    if(_player_transform.position.x-_transform.position.x<0)//플레이어를 바라보게 해주는 함수
-                    {
-                        rend.flipX = true;
-                    }
-                    else
-                    {
-                        rend.flipX = false;
-                    }
-                    _animator.SetBool("ismoving", true);
-                    _animator.SetBool("isattack", false);
-                    MoveToTarget();
                     break;
                 case CurrentState.attack:
-                    _animator.SetBool("ismoving", false);
-                    _animator.SetBool("isattack", true);
+                    
                     break;
             }
+            yield return null;
         }
-        yield return null;
+        
 
     }
     // Update is called once per frame

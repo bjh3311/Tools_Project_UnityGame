@@ -4721,6 +4721,7 @@ GameObject:
   - component: {fileID: 934998816}
   - component: {fileID: 934998815}
   - component: {fileID: 934998814}
+  - component: {fileID: 934998819}
   m_Layer: 0
   m_Name: 2_enemies_1_idle_000
   m_TagString: Enemy
@@ -4858,6 +4859,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934998819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934998813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd923a9d66261e842a48827b9bccec27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curState: 0
+  rend: {fileID: 934998817}
+  traceDist: 20
+  attackDist: 4
 --- !u!1 &1202700502
 GameObject:
   m_ObjectHideFlags: 0
