@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Boss_Fsm : MonoBehaviour
+public class Boss_FSM : MonoBehaviour
 {
     public enum CurrentState { idle,attack,walk,dead};
     public CurrentState curState = CurrentState.idle;//초기상태는 idle
@@ -27,7 +27,7 @@ public class Boss_Fsm : MonoBehaviour
         _animator = this.gameObject.GetComponent<Animator>();
         StartCoroutine(this.CheckState());//현재상태를 체크하는 코루틴 시작
         StartCoroutine(this.CheckStateForAction());
-        rend = GetComponent<SpriteRenderer>();
+        rend = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     IEnumerator CheckState()
@@ -57,6 +57,8 @@ public class Boss_Fsm : MonoBehaviour
             switch(curState)
             {
                 case CurrentState.idle:
+                    _animator.SetBool("ismoving", false);
+                    _animator.SetBool("isattack", false);
                     break;
                 case CurrentState.walk:
                     if(_player_transform.position.x-_transform.position.x<0)//플레이어를 바라보게 해주는 함수
@@ -67,9 +69,13 @@ public class Boss_Fsm : MonoBehaviour
                     {
                         rend.flipX = false;
                     }
-
+                    _animator.SetBool("ismoving", true);
+                    _animator.SetBool("isattack", false);
+                    MoveToTarget();
                     break;
                 case CurrentState.attack:
+                    _animator.SetBool("ismoving", false);
+                    _animator.SetBool("isattack", true);
                     break;
             }
         }
@@ -77,6 +83,12 @@ public class Boss_Fsm : MonoBehaviour
 
     }
     // Update is called once per frame
+    public void MoveToTarget()
+    {
+        float dir = _player_transform.position.x - _transform.position.x;
+        dir = (dir < 0) ? -1 : 1;//참이면 -1 거짓이면 1
+        _transform.Translate(new Vector2(dir, 0) * 3.0f * Time.deltaTime);
+    }
     void Update()
     {
         
