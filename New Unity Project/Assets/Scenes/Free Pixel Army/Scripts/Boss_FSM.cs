@@ -89,7 +89,6 @@ public class Boss_FSM : MonoBehaviour
         
         while(!isDead)
         {
-            Debug.Log(curState);
             switch (curState)
             {
                 
@@ -119,9 +118,12 @@ public class Boss_FSM : MonoBehaviour
                     break;
                 case CurrentState.dead:
                     _animator.SetBool("isdie", true);
-                    isDead = true;
-                    Destroy(gameObject);
+                    _animator.SetBool("ismoving", false);
+                    _animator.SetBool("isattack", false);
                     Destroy(hpBar.gameObject);
+                    yield return new WaitForSeconds(1.65f);
+                    isDead = true;
+                    Destroy(this.gameObject);
                     break;
             }
             yield return null;
@@ -140,9 +142,5 @@ public class Boss_FSM : MonoBehaviour
            Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0));
         hpBar.position = _hpBarPos;
         nowHpbar.fillAmount = (float)nowHp / (float)maxHp;
-    }
-    void Update()
-    {
-        
     }
 }
