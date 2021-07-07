@@ -10,9 +10,14 @@ public class Player : MonoBehaviour
     public GameObject Weapons_0;//무기 오브젝트
     SpriteRenderer rend;
     Rigidbody2D rigid;
+
+
     public float maxShotDelay = 0.2f;//최대속도
     public float curShotDelay;//발사간 속도
-    public GameObject bulletObj;
+    public  GameObject prefab_bullet;//총알 오브젝트 풀링
+    private List<GameObject> bulletPool = new List<GameObject>();//총알 Pool
+    private readonly int bulletMaxCount = 10;//내가 생성할 총알 갯수
+    private int curBulletIndex = 0;//현재 장전된 총알의 인덱스
 
     public GameObject item;
 
@@ -34,6 +39,13 @@ public class Player : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         _nowHpbar = nowHpbar.transform.GetComponent<Image>();
         animator = GetComponent<Animator>();
+        for(int i=0;i<bulletMaxCount;i++)//총알을 bulletMaxCount만큼 생성
+        {
+            GameObject b = Instantiate<GameObject>(prefab_bullet);
+            b.SetActive(false);//총알 발사하기 전까지는 비활성화
+
+            bulletPool.Add(b);
+        }
         
     }
     // Update is called once per fdbslxl rame , 1분에 약60번 업데이트
@@ -95,23 +107,40 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        if (curShotDelay < maxShotDelay)//장전시간이 충족이안되면
+        if (curShotDelay < maxShotDelay)//장전시간이 충족이안되면 종료
+        {
+            return;
+        }
+
+        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
+        if (bulletPool[curBulletIndex].activeSelf)
         {
             return;
         }
         if (rend.flipX)//왼쪽을 볼 때
         {
-            GameObject bullet = Instantiate(bulletObj, transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f, transform.rotation);
+            bulletPool[curBulletIndex].transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f;
             //현재 위치보다 왼쪽위에 총알생성 
-            Rigidbody2D rigid_bullet = bullet.GetComponent<Rigidbody2D>();
+            bulletPool[curBulletIndex].SetActive(true);//총알활성화
+            
+            Rigidbody2D rigid_bullet = bulletPool[curBulletIndex].GetComponent<Rigidbody2D>();
             rigid_bullet.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
         }
         else if (!rend.flipX)//오른쪽을 볼 때
         {
-            GameObject bullet = Instantiate(bulletObj, transform.position + Vector3.right * 2.0f + Vector3.up * 1.0f, transform.rotation);
+            bulletPool[curBulletIndex].transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f;
             //현재 위치보다 오른쪽위에 총알생성 
-            Rigidbody2D rigid_bullet = bullet.GetComponent<Rigidbody2D>();
+            bulletPool[curBulletIndex].SetActive(true);//총알활성화
+            Rigidbody2D rigid_bullet = bulletPool[curBulletIndex].GetComponent<Rigidbody2D>();
             rigid_bullet.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
+        }
+        if(curBulletIndex>=bulletMaxCount-1)
+        {
+            curBulletIndex = 0;
+        }
+        else
+        {
+            curBulletIndex++;
         }
         curShotDelay = 0;//꼭 초기화해줘야된다.
     }

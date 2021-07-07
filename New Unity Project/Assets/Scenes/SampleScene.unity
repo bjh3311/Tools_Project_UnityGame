@@ -393,7 +393,7 @@ MonoBehaviour:
   Weapons_0: {fileID: 1440086924}
   maxShotDelay: 0.2
   curShotDelay: 0
-  bulletObj: {fileID: 1187522541993332461, guid: b22c80f446bc7cc439cbec9eece87774,
+  prefab_bullet: {fileID: 1187522541993332461, guid: b22c80f446bc7cc439cbec9eece87774,
     type: 3}
   item: {fileID: 84237349}
   isGround: 0
