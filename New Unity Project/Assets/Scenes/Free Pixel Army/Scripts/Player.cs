@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     public float maxShotDelay = 0.2f;//최대속도
     public float curShotDelay;//발사간 속도
-    public  GameObject prefab_bullet;//총알 오브젝트 풀링
+    public  GameObject prefab_bullet;//총알 오브젝트 풀링T
     private List<GameObject> bulletPool = new List<GameObject>();//총알 Pool
     private readonly int bulletMaxCount = 10;//내가 생성할 총알 갯수
     private int curBulletIndex = 0;//현재 장전된 총알의 인덱스
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
         }
         else if (!rend.flipX)//오른쪽을 볼 때
         {
-            bulletPool[curBulletIndex].transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f;
+            bulletPool[curBulletIndex].transform.position = this.transform.position + Vector3.right * 2.0f + Vector3.up * 1.0f;
             //현재 위치보다 오른쪽위에 총알생성 
             bulletPool[curBulletIndex].SetActive(true);//총알활성화
             Rigidbody2D rigid_bullet = bulletPool[curBulletIndex].GetComponent<Rigidbody2D>();
