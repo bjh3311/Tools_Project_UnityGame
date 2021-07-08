@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
     public float maxShotDelay = 0.2f;//최대속도
     public float curShotDelay;//발사간 속도
     public  GameObject prefab_bullet;//총알 오브젝트 풀링T
-    private List<GameObject> bulletPool = new List<GameObject>();//총알 Pool
-    private readonly int bulletMaxCount = 10;//내가 생성할 총알 갯수
+    public static Queue<GameObject> bulletPool = new Queue<GameObject>();//총알 Pool
+    private readonly int bulletMaxCount = 50;//내가 생성할 총알 갯수
     private int curBulletIndex = 0;//현재 장전된 총알의 인덱스
 
     public GameObject item;
@@ -43,8 +43,7 @@ public class Player : MonoBehaviour
         {
             GameObject b = Instantiate<GameObject>(prefab_bullet);
             b.SetActive(false);//총알 발사하기 전까지는 비활성화
-
-            bulletPool.Add(b);
+            bulletPool.Enqueue(b);
         }
         
     }
@@ -96,10 +95,23 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     void Reload()
     {
         curShotDelay += Time.deltaTime;
+    }
+    public void InSertQueue(GameObject b_object)//사용한 총알을 오브젝트 풀에 다시 넣는다
+    {
+
+        Debug.Log("InsertQueue실행!!");
+        bulletPool.Enqueue(b_object);
+        b_object.SetActive(false);
+    }
+    public GameObject GetQueue()//오브젝트 풀에서 총알을 빼온다
+    {
+        Debug.Log("GetQueue실행!!");
+        GameObject b_object = bulletPool.Dequeue();
+        b_object.SetActive(true);
+        return b_object;
     }
     void Fire()//발사하는 함수
     {
@@ -111,27 +123,24 @@ public class Player : MonoBehaviour
         {
             return;
         }
-
-        //발사되어야할 순번의 총알이 이전에 발사한 후로 아직 날아가고 있는 중이라면, 발사를 못하게 한다.
-        if (bulletPool[curBulletIndex].activeSelf)
+        //오브젝트 풀에 총알이 더 없다면 종료 시킨다
+        if (bulletPool.Count<=0)
         {
             return;
         }
+        GameObject B = GetQueue();
         if (rend.flipX)//왼쪽을 볼 때
         {
-            bulletPool[curBulletIndex].transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f;
+            B.transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f;
             //현재 위치보다 왼쪽위에 총알생성 
-            bulletPool[curBulletIndex].SetActive(true);//총알활성화
-            
-            Rigidbody2D rigid_bullet = bulletPool[curBulletIndex].GetComponent<Rigidbody2D>();
+            Rigidbody2D rigid_bullet = B.GetComponent<Rigidbody2D>();
             rigid_bullet.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
         }
         else if (!rend.flipX)//오른쪽을 볼 때
         {
-            bulletPool[curBulletIndex].transform.position = this.transform.position + Vector3.right * 2.0f + Vector3.up * 1.0f;
+            B.transform.position = this.transform.position + Vector3.right * 2.0f + Vector3.up * 1.0f;
             //현재 위치보다 오른쪽위에 총알생성 
-            bulletPool[curBulletIndex].SetActive(true);//총알활성화
-            Rigidbody2D rigid_bullet = bulletPool[curBulletIndex].GetComponent<Rigidbody2D>();
+            Rigidbody2D rigid_bullet = B.GetComponent<Rigidbody2D>();
             rigid_bullet.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
         }
         if(curBulletIndex>=bulletMaxCount-1)
