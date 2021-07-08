@@ -11,13 +11,8 @@ public class Player : MonoBehaviour
     SpriteRenderer rend;
     Rigidbody2D rigid;
 
-
     public float maxShotDelay = 0.2f;//최대속도
     public float curShotDelay;//발사간 속도
-    public  GameObject prefab_bullet;//총알 오브젝트 풀링T
-    public static Queue<GameObject> bulletPool = new Queue<GameObject>();//총알 Pool
-    private readonly int bulletMaxCount = 50;//내가 생성할 총알 갯수
-    private int curBulletIndex = 0;//현재 장전된 총알의 인덱스
 
     public GameObject item;
 
@@ -39,13 +34,6 @@ public class Player : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         _nowHpbar = nowHpbar.transform.GetComponent<Image>();
         animator = GetComponent<Animator>();
-        for(int i=0;i<bulletMaxCount;i++)//총알을 bulletMaxCount만큼 생성
-        {
-            GameObject b = Instantiate<GameObject>(prefab_bullet);
-            b.SetActive(false);//총알 발사하기 전까지는 비활성화
-            bulletPool.Enqueue(b);
-        }
-        
     }
     // Update is called once per fdbslxl rame , 1분에 약60번 업데이트
     void Update()
@@ -99,20 +87,6 @@ public class Player : MonoBehaviour
     {
         curShotDelay += Time.deltaTime;
     }
-    public void InSertQueue(GameObject b_object)//사용한 총알을 오브젝트 풀에 다시 넣는다
-    {
-
-        Debug.Log("InsertQueue실행!!");
-        bulletPool.Enqueue(b_object);
-        b_object.SetActive(false);
-    }
-    public GameObject GetQueue()//오브젝트 풀에서 총알을 빼온다
-    {
-        Debug.Log("GetQueue실행!!");
-        GameObject b_object = bulletPool.Dequeue();
-        b_object.SetActive(true);
-        return b_object;
-    }
     void Fire()//발사하는 함수
     {
         if (!Input.GetButton("Fire1"))//Fire버튼을 안누르면 종료
@@ -123,12 +97,8 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        GameObject B = Player_Object_Pool.GetQueue();
         //오브젝트 풀에 총알이 더 없다면 종료 시킨다
-        if (bulletPool.Count<=0)
-        {
-            return;
-        }
-        GameObject B = GetQueue();
         if (rend.flipX)//왼쪽을 볼 때
         {
             B.transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 1.0f;
@@ -142,14 +112,6 @@ public class Player : MonoBehaviour
             //현재 위치보다 오른쪽위에 총알생성 
             Rigidbody2D rigid_bullet = B.GetComponent<Rigidbody2D>();
             rigid_bullet.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
-        }
-        if(curBulletIndex>=bulletMaxCount-1)
-        {
-            curBulletIndex = 0;
-        }
-        else
-        {
-            curBulletIndex++;
         }
         curShotDelay = 0;//꼭 초기화해줘야된다.
     }
