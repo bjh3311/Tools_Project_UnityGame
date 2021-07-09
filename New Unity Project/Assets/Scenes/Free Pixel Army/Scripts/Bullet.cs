@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Player p;//Player 스크립트
-    public GameObject Player;
     private void Start()
     {
     

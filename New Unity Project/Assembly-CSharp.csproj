@@ -64,10 +64,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\BoredButton.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Boss_FSM.cs" />
+    <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Boss_Object_Pool.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Enemy_Bullet.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\FPS.cs" />
+    <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Fireball.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\IdleButton.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Item.cs" />
     <Compile Include="Assets\Scenes\Free Pixel Army\Scripts\Player.cs" />

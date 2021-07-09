@@ -118,6 +118,15 @@ public class Boss_FSM : MonoBehaviour
                     _animator.SetBool("ismoving", false);
                     _animator.SetBool("isattack", true);
                     GameObject bullet = Instantiate(Fireball, transform.position + Vector3.left * 2.5f + Vector3.up * 1.0f, transform.rotation);
+                    if (_player_transform.position.x - _transform.position.x < 0) // 타겟이 왼쪽에 있을 때
+                    {
+                        rend.flipX = false;
+                    }
+                    else // 타겟이 오른쪽에 있을 때
+                    {
+                        rend.flipX = true;
+                    }
+                    
                     HP();
                     break;
                 case CurrentState.dead:

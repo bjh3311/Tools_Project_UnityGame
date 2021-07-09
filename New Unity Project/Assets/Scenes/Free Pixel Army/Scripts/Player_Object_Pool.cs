@@ -20,14 +20,11 @@ public class Player_Object_Pool : MonoBehaviour
     }
     public static void InSertQueue(GameObject b_object)//사용한 총알을 오브젝트 풀에 다시 넣는다
     {
-
-        Debug.Log("InsertQueue실행!!");
         bulletPool.Enqueue(b_object);
         b_object.SetActive(false);
     }
     public static GameObject GetQueue()//오브젝트 풀에서 총알을 빼온다
     {
-        Debug.Log("GetQueue실행!!");
         if(bulletPool.Count<=0)
         {
             return null;
