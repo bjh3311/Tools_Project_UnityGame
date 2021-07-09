@@ -4776,6 +4776,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd923a9d66261e842a48827b9bccec27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fireball: {fileID: 7841135407653008716, guid: 53b7df3908397954ab85b42af28e1dfc,
+    type: 3}
   prfHpBar: {fileID: 1790307988}
   canvas: {fileID: 1202700502}
   height: 5

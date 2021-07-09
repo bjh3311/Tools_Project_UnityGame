@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Boss_FSM : MonoBehaviour
 {
+
+    public GameObject Fireball;
+
     public GameObject prfHpBar;
     public GameObject canvas;//HP바 관련
     public float height = 5.0f;
@@ -114,6 +117,7 @@ public class Boss_FSM : MonoBehaviour
                 case CurrentState.attack:
                     _animator.SetBool("ismoving", false);
                     _animator.SetBool("isattack", true);
+                    GameObject bullet = Instantiate(Fireball, transform.position + Vector3.left * 2.5f + Vector3.up * 1.0f, transform.rotation);
                     HP();
                     break;
                 case CurrentState.dead:
