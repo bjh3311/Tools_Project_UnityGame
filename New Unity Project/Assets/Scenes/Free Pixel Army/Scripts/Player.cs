@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     {
         Move();//이동하는 함수
         Fire();//총알을 쏘는 함수
-        Reload();//장전한하는 함수
+        Reload();//장전하는 함수
         _nowHpbar.fillAmount = (float)nowHp /(float)100;
         
     }

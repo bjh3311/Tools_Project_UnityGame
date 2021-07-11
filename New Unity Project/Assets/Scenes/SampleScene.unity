@@ -4787,7 +4787,7 @@ MonoBehaviour:
   curState: 0
   rend: {fileID: 0}
   traceDist: 20
-  attackDist: 6.5
+  attackDist: 12
 --- !u!1 &1202700502
 GameObject:
   m_ObjectHideFlags: 0
@@ -6197,7 +6197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a107db53347cd364bb288b16034c5f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab_fireball: {fileID: 0}
+  prefab_fireball: {fileID: 7841135407653008716, guid: 53b7df3908397954ab85b42af28e1dfc,
+    type: 3}
 --- !u!4 &1537540687
 Transform:
   m_ObjectHideFlags: 0

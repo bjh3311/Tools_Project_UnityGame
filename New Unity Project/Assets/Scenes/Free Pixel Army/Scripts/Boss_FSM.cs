@@ -40,7 +40,7 @@ public class Boss_FSM : MonoBehaviour
     public SpriteRenderer rend;
 
     public float traceDist = 20.0f;//추적거리
-    public float attackDist = 6.5f;//공격거리
+    public float attackDist = 12.0f;//공격거리
 
     private Animator _animator;
 
@@ -117,16 +117,27 @@ public class Boss_FSM : MonoBehaviour
                 case CurrentState.attack:
                     _animator.SetBool("ismoving", false);
                     _animator.SetBool("isattack", true);
-                    GameObject bullet = Instantiate(Fireball, transform.position + Vector3.left * 2.5f + Vector3.up * 1.0f, transform.rotation);
+                    GameObject fireball = Boss_Object_Pool.GetQueue();//보스 오브젝트 풀에서 GetQueue로 빼온다
                     if (_player_transform.position.x - _transform.position.x < 0) // 타겟이 왼쪽에 있을 때
                     {
                         rend.flipX = false;
+                        SpriteRenderer fireball_rend = fireball.GetComponent<SpriteRenderer>();
+                        fireball_rend.flipX = true;
+                        fireball.transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 2.0f;
+                        //현재 위치보다 왼쪽위에 총알생성 
+                        Rigidbody2D rigid_bullet = fireball.GetComponent<Rigidbody2D>();
+                        rigid_bullet.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
                     }
                     else // 타겟이 오른쪽에 있을 때
                     {
                         rend.flipX = true;
+                        SpriteRenderer fireball_rend = fireball.GetComponent<SpriteRenderer>();
+                        fireball_rend.flipX = false;
+                        fireball.transform.position = this.transform.position + Vector3.right * 2.0f + Vector3.up * 2.0f;
+                        //현재 위치보다 왼쪽위에 총알생성 
+                        Rigidbody2D rigid_bullet = fireball.GetComponent<Rigidbody2D>();
+                        rigid_bullet.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
                     }
-                    
                     HP();
                     break;
                 case CurrentState.dead:
