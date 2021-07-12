@@ -15,6 +15,8 @@ public class Fireball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("플레이어와 부딪힘");
+            this.gameObject.SetActive(false);
             Boss_Object_Pool.InSertQueue(this.gameObject);
         }
     }
