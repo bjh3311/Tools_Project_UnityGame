@@ -8,7 +8,6 @@ public class Fireball : MonoBehaviour
     {
         if (this.gameObject.activeSelf)//True상태로 Set 되어 있을때만 InsertQueue 실행
         {
-            Debug.Log("InsertQueue실행!");
             Boss_Object_Pool.InSertQueue(this.gameObject);
         }
     }

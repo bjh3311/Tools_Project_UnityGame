@@ -25,6 +25,7 @@ public class Boss_Object_Pool : MonoBehaviour
     }
     public static GameObject GetQueue()//오브젝트 풀에서 fireball을 빼온다
     {
+        
         if (fireballPool.Count <= 0)//비어있으면 아무것도 반환하지 않는다
         {
             return null;

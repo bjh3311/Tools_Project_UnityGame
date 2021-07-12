@@ -118,28 +118,16 @@ public class Boss_FSM : MonoBehaviour
                     _animator.SetBool("ismoving", false);
                     _animator.SetBool("isattack", true);
                     GameObject fireball = Boss_Object_Pool.GetQueue();//보스 오브젝트 풀에서 GetQueue로 빼온다
-                    if (_player_transform.position.x - _transform.position.x < 0) // 타겟이 왼쪽에 있을 때
-                    {
-                        rend.flipX = false;
-                        SpriteRenderer fireball_rend = fireball.GetComponent<SpriteRenderer>();
-                        fireball_rend.flipX = true;
-                        fireball.transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 2.0f;
-                        //현재 위치보다 왼쪽위에 총알생성 
-                        Rigidbody2D rigid_bullet = fireball.GetComponent<Rigidbody2D>();
-                        rigid_bullet.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
-                    }
-                    else // 타겟이 오른쪽에 있을 때
-                    {
-                        rend.flipX = true;
-                        SpriteRenderer fireball_rend = fireball.GetComponent<SpriteRenderer>();
-                        fireball_rend.flipX = false;
-                        fireball.transform.position = this.transform.position + Vector3.right * 2.0f + Vector3.up * 2.0f;
-                        //현재 위치보다 왼쪽위에 총알생성 
-                        Rigidbody2D rigid_bullet = fireball.GetComponent<Rigidbody2D>();
-                        rigid_bullet.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
-                    }
+                    HP();
+                    SpriteRenderer fireball_rend = fireball.GetComponent<SpriteRenderer>();
+                    fireball_rend.flipX = true;
+                    fireball.transform.position = this.transform.position + Vector3.left * 2.0f + Vector3.up * 0.1f;
+                    //현재 위치보다 왼쪽위에 총알생성 
+                    Rigidbody2D rigid_bullet = fireball.GetComponent<Rigidbody2D>();
+                    rigid_bullet.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
                     HP();
                     break;
+                    
                 case CurrentState.dead:
                     _animator.SetBool("isdie", true);
                     _animator.SetBool("ismoving", false);
